@@ -23,12 +23,29 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="space-y-6 lg:space-y-8 text-center lg:text-left w-full max-w-lg lg:max-w-none"
           >
-            <div className="space-y-4 lg:space-y-6">
-              <Logo className="text-2xl" />
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-k-white leading-tight">
-                Digital Services at{' '}
-                <span className="text-k-yellow">Kwaret TN</span>
-              </h1>
+            <div className="space-y-6 lg:space-y-8">
+              {/* Logo with enhanced styling */}
+              <div className="flex justify-center lg:justify-start">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-k-yellow/20 rounded-full blur-lg scale-110" />
+                  <Logo className="text-3xl lg:text-4xl relative z-10" />
+                </div>
+              </div>
+              
+              {/* Main Title with enhanced styling */}
+              <div className="space-y-4">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold text-k-white leading-[0.9] tracking-tight">
+                  <span className="block">Digital Services</span>
+                  <span className="block">at{' '}
+                    <span className="relative">
+                      <span className="text-k-yellow bg-gradient-to-r from-k-yellow to-k-yellowSoft bg-clip-text text-transparent">
+                        Kwaret TN
+                      </span>
+                      <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-k-yellow to-k-yellowSoft rounded-full opacity-60" />
+                    </span>
+                  </span>
+                </h1>
+              </div>
               <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 Premium subscriptions, gaming credits, internet plans & software licenses. 
                 Trusted by thousands in Tunisia. Fast activation • Warranty • Best prices.

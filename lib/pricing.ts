@@ -68,6 +68,18 @@ export const plans = [
       { label: '1 Year', price: '89.9 TND', note: '~50% OFF' }
     ]
   },
+  {
+    tag: '🔥 Popular',
+    product: 'Kwaret TV',
+    bullets: ['8,000+ Channels (live TV)', '26,000+ Movies', '8,600+ Series', 'HD Streaming Quality', 'Uninterrupted Streaming (no cuts, smooth playback)'],
+    tiers: [
+      { label: '1 Month', price: '29.9 TND' },
+      { label: '3 Months', price: '34.9 TND', note: '~was 90 TND~' },
+      { label: '6 Months', price: '44.9 TND', note: '~was 110 TND~' },
+      { label: '1 Year', price: '69.9 TND', note: '~was 150 TND~' }
+    ],
+    color: 'k.yellow'
+  },
   
   // Internet & Mobile
   {
