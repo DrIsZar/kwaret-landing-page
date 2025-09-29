@@ -1,0 +1,115 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import { Button } from '@/components/ui/button'
+import Container from '@/components/Container'
+import { socials } from '@/lib/socials'
+
+const faqs = [
+  {
+    question: "How does the warranty work?",
+    answer: "All our services come with a full warranty. If your account gets suspended, banned, or stops working for any reason, we'll replace it for free within the warranty period. Just contact us on Messenger and we'll resolve it immediately."
+  },
+  {
+    question: "When do I receive access after payment?",
+    answer: "Most accounts are activated within 5-15 minutes after payment confirmation. For some services, it may take up to 24 hours. We'll send you the login details via Messenger as soon as your account is ready."
+  },
+  {
+    question: "What payment methods do you accept?",
+    answer: "We accept all major payment methods including bank transfers, mobile money (Orange Money, Ooredoo Money), and cash on delivery in some areas. Contact us on Messenger to discuss the best payment option for you."
+  },
+  {
+    question: "Are these shared accounts or personal?",
+    answer: "We provide both shared and personal accounts depending on the service. Personal accounts (like ChatGPT Workspace) are private to you only. Shared accounts are clearly marked and come with usage guidelines."
+  },
+  {
+    question: "How do gaming credits work?",
+    answer: "Gaming credits like Robux and PlayStation cards are delivered instantly after payment. You'll receive the codes via Messenger that you can redeem directly in your gaming platform. All codes are guaranteed to work."
+  },
+  {
+    question: "What about internet plans and solde?",
+    answer: "Our Ooredoo internet plans are activated instantly. For solde (credit), you get a rate of 0.86 (e.g., 10 TND credit costs 8.6 TND). All plans come with warranty and instant activation."
+  },
+  {
+    question: "Are software licenses legitimate?",
+    answer: "Yes, all our software licenses (Windows, Canva Pro) are legitimate and come with lifetime validity. Windows keys are retail licenses, and Canva Pro subscriptions are full-year access with all premium features."
+  },
+  {
+    question: "What if I need help with my account?",
+    answer: "Our support team is available 24/7 on Messenger. Whether you need help setting up your account, have questions about features, or encounter any issues, just message us and we'll help you immediately."
+  },
+  {
+    question: "Do you offer refunds?",
+    answer: "We offer refunds within 24 hours if the service doesn't work as expected and we can't resolve the issue. However, our warranty system ensures that most issues are resolved by providing replacement accounts rather than refunds."
+  }
+]
+
+export default function FAQ() {
+  return (
+    <section className="py-24 bg-k-black">
+      <Container>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="space-y-12"
+        >
+          <div className="text-center space-y-4">
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-k-white">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Got questions? We&apos;ve got answers. If you don&apos;t see your question here, 
+              feel free to ask us directly on Messenger.
+            </p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <Accordion type="single" collapsible className="space-y-4">
+              {faqs.map((faq, index) => (
+                <AccordionItem 
+                  key={index} 
+                  value={`item-${index}`}
+                  className="border border-k-gray rounded-lg px-6 bg-k-black/50"
+                >
+                  <AccordionTrigger className="text-left text-k-white hover:text-k-yellow">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-300 leading-relaxed">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-center space-y-6"
+          >
+            <p className="text-gray-300 text-lg">
+              Still have questions? We&apos;re here to help!
+            </p>
+            <Button
+              size="lg"
+              onClick={() => window.open(socials.messenger, '_blank')}
+            >
+              Ask us on Messenger
+            </Button>
+          </motion.div>
+        </motion.div>
+      </Container>
+    </section>
+  )
+}
