@@ -22,9 +22,16 @@ const serviceLogos = {
   'Ooredoo Internet / Solde': '/logos/ooredoo-logo.png',
   'Windows 11 Pro Key': '/logos/windows-logo.png',
   'Canva Pro': '/logos/canva-logo.png',
+  'Microsoft 365 (All Apps)': '/logos/microsoft-365-logo.png',
   'Robux (Roblox)': '/logos/roblox-logo.png',
   'PlayStation Cards (France)': '/logos/playstation-logo.png',
   'PlayStation Cards (US)': '/logos/playstation-logo.png',
+  'Cursor AI Pro': '/logos/cursor-logo.png',
+  'League of Legends (Riot Points)': '/logos/lol-logo.png',
+  'Valorant Points (EUW)': '/logos/valorant-logo.png',
+  'Valorant Points (TR)': '/logos/valorant-logo.png',
+  'Steam Gift Cards (USD)': '/logos/steam-logo.png',
+  'Steam Gift Cards (EUR)': '/logos/steam-logo.png',
 }
 
 interface PricingCardProps {
@@ -78,11 +85,17 @@ export default function PricingCard({ plan, index }: PricingCardProps) {
                 src={serviceLogos[plan.product as keyof typeof serviceLogos] || '/logos/default-logo.png'}
                 alt={`${plan.product} Logo`}
                 fill
-                className={`object-cover ${
-                  plan.product.includes('Adobe') ? 'scale-125' : 
-                  plan.product.includes('ChatGPT') ? 'scale-100' : 
-                  'scale-110'
-                }`}
+                className={
+                  plan.product.includes('Microsoft 365')
+                    ? 'object-contain scale-90'
+                    : plan.product.includes('Robux')
+                      ? 'object-contain scale-100'
+                      : `object-cover ${
+                          plan.product.includes('Adobe') ? 'scale-125' : 
+                          plan.product.includes('ChatGPT') ? 'scale-100' : 
+                          'scale-110'
+                        }`
+                }
                 onError={(e) => {
                   // Fallback to placeholder if logo doesn't exist
                   const target = e.target as HTMLImageElement
@@ -126,7 +139,7 @@ export default function PricingCard({ plan, index }: PricingCardProps) {
                 onClick={() => handleBuyClick(plan.product, tier.label)}
               >
                 <div className="flex-1 min-w-0">
-                  <div className="font-medium text-k-white text-sm sm:text-base truncate group-hover:text-k-yellow transition-colors">{tier.label}</div>
+                  <div className="font-medium text-k-white text-sm sm:text-base group-hover:text-k-yellow transition-colors whitespace-normal break-words">{tier.label}</div>
                   {tier.note && (
                     <div className="text-xs sm:text-sm text-k-yellow font-medium mt-1">
                       {tier.note}

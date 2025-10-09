@@ -11,6 +11,15 @@ export const plans = [
     color: 'k.yellow'
   },
   {
+    tag: 'Software',
+    product: 'Cursor AI Pro',
+    bullets: ['Unlimited Copilot+ context', 'Faster code generation', 'Priority features & updates'],
+    tiers: [
+      { label: '1 Month', price: '44.9 TND' },
+      { label: '3 Months', price: '89.9 TND' }
+    ]
+  },
+  {
     tag: '🔥 Popular',
     product: 'Adobe Creative Cloud (All Apps)',
     bullets: ['Full Adobe suite', 'AI features', 'Fonts, Stock, Cloud storage'],
@@ -22,6 +31,14 @@ export const plans = [
     ]
   },
   {
+    tag: 'Software',
+    product: 'Microsoft 365 (All Apps)',
+    bullets: ['All Office apps', '1 Year subscription', 'Fast activation'],
+    tiers: [
+      { label: '1 Year', price: '99 TND' }
+    ]
+  },
+  {
     tag: '🔥 Popular',
     product: 'Netflix Premium',
     bullets: ['4K UHD + HDR', '4 devices at once', 'Downloads, spatial audio'],
@@ -30,7 +47,7 @@ export const plans = [
   {
     tag: 'Music Streaming',
     product: 'Spotify Premium (Solo)',
-    bullets: ['Instant activation', 'Warranty', 'All regions'],
+    bullets: ['Fast activation', 'Warranty', 'All regions'],
     tiers: [
       { label: '1 Month', price: '8.9 TND' },
       { label: '3 Months', price: '24.9 TND', note: '~10% OFF' },
@@ -40,7 +57,7 @@ export const plans = [
   {
     tag: 'Music Streaming',
     product: 'Spotify Premium (Duo)',
-    bullets: ['2 persons', 'Instant activation', 'Warranty'],
+    bullets: ['2 persons', 'Fast activation', 'Warranty'],
     tiers: [
       { label: '1 Month', price: '17.9 TND' },
       { label: '3 Months', price: '34.9 TND', note: '~40% OFF' },
@@ -111,7 +128,7 @@ export const plans = [
   {
     tag: 'Software',
     product: 'Canva Pro',
-    bullets: ['1 Year subscription', 'All premium features', 'Instant activation'],
+    bullets: ['1 Year subscription', 'All premium features', 'Fast activation'],
     tiers: [
       { label: '1 Year', price: '39.9 TND' }
     ]
@@ -121,7 +138,7 @@ export const plans = [
   {
     tag: 'Gaming',
     product: 'Robux (Roblox)',
-    bullets: ['Instant delivery', 'Various amounts', 'Best prices'],
+    bullets: ['Fast delivery', 'Various amounts', 'Best prices'],
     tiers: [
       { label: '40 Robux', price: '2.9 TND' },
       { label: '80 Robux', price: '4.9 TND', note: 'save 1 TND' },
@@ -133,8 +150,64 @@ export const plans = [
   },
   {
     tag: 'Gaming',
+    product: 'Steam Gift Cards (USD)',
+    bullets: ['Fast delivery', 'Region: Global', 'Code or top-up'],
+    tiers: [
+      { label: '5$', price: '19.9 TND' },
+      { label: '10$', price: '38.9 TND' },
+      { label: '20$', price: '77.9 TND' }
+    ]
+  },
+  {
+    tag: 'Gaming',
+    product: 'Steam Gift Cards (EUR)',
+    bullets: ['Fast delivery', 'Region: EU', 'Code or top-up'],
+    tiers: [
+      { label: '10€', price: '39.9 TND' }
+    ]
+  },
+  {
+    tag: 'Gaming',
+    product: 'League of Legends (Riot Points)',
+    bullets: ['Fast delivery', 'Direct top-up or code', 'Best prices'],
+    tiers: [
+      { label: '575 RP (5€)', price: '19.9 TND' },
+      { label: '1240 RP (10€)', price: '38.9 TND' },
+      { label: '1895 RP (15€)', price: '58.9 TND' },
+      { label: '2540 RP (20€)', price: '76.9 TND' },
+      { label: '3190 RP (25€)', price: '96.9 TND' },
+      { label: '6500 RP (50€)', price: '189.9 TND' }
+    ]
+  },
+  {
+    tag: 'Gaming',
+    product: 'Valorant Points (EUW)',
+    bullets: ['Fast delivery', 'Direct top-up or code', 'Best prices'],
+    tiers: [
+      { label: '475 VP (5€)', price: '19.9 TND' },
+      { label: '1000 VP (10€)', price: '38.9 TND' },
+      { label: '1525 VP (15€)', price: '57.9 TND' },
+      { label: '2050 VP (20€)', price: '76.9 TND' },
+      { label: '2575 VP (25€)', price: '95.9 TND' },
+      { label: '5350 VP (50€)', price: '188.9 TND' }
+    ]
+  },
+  {
+    tag: 'Gaming',
+    product: 'Valorant Points (TR)',
+    bullets: ['Fast delivery', 'Direct top-up or code', 'Best prices'],
+    tiers: [
+      { label: '475 VP (120 TRY)', price: '15.9 TND' },
+      { label: '1000 VP (250 TRY)', price: '29.9 TND' },
+      { label: '2050 VP (500 TRY)', price: '56.9 TND' },
+      { label: '3650 VP (850 TRY)', price: '89.9 TND' },
+      { label: '5350 VP (1230 TRY)', price: '129.9 TND' }
+    ]
+  },
+  {
+    tag: 'Gaming',
     product: 'PlayStation Cards (France)',
-    bullets: ['Instant delivery', 'French PSN', 'Best rates'],
+    bullets: ['Fast delivery', 'French PSN', 'Best rates'],
     tiers: [
       { label: '10€', price: '39.9 TND' },
       { label: '20€', price: '77.9 TND' },
@@ -145,7 +218,7 @@ export const plans = [
   {
     tag: 'Gaming',
     product: 'PlayStation Cards (US)',
-    bullets: ['Instant delivery', 'US PSN', 'Best rates'],
+    bullets: ['Fast delivery', 'US PSN', 'Best rates'],
     tiers: [
       { label: '10$', price: '37.9 TND' },
       { label: '20$', price: '74.9 TND' },
