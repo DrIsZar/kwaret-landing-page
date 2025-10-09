@@ -30,12 +30,6 @@ const paymentMethods = [
     logo: '/logos/usdt-logo.png',
     description: 'Cryptocurrency payments',
     fee: 'Network fees apply'
-  },
-  {
-    name: 'Wise',
-    logo: '/logos/wise-logo.png',
-    description: 'International transfers',
-    fee: '0% fees'
   }
 ]
 
@@ -95,7 +89,7 @@ export default function PaymentMethods() {
             className="relative"
           >
             {/* Desktop Grid */}
-            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-5xl mx-auto justify-items-center place-items-center">
+            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-4xl mx-auto justify-items-center place-items-center">
               {paymentMethods.map((method, index) => (
                 <motion.div
                   key={method.name}
@@ -106,7 +100,7 @@ export default function PaymentMethods() {
                   whileHover={{ y: -5, scale: 1.05 }}
                   className="group"
                 >
-                  <div className="bg-k-gray/30 hover:bg-k-gray/50 rounded-xl p-5 transition-all duration-300 border border-k-gray/20 hover:border-k-yellow/30 hover:shadow-glow h-44 flex flex-col items-center justify-center text-center w-full max-w-[200px]">
+                  <div className="bg-k-gray/30 hover:bg-k-gray/50 rounded-xl p-5 transition-all duration-300 border border-k-gray/20 hover:border-k-yellow/30 hover:shadow-glow h-44 flex flex-col items-center justify-center text-center w-full max-w-[220px]">
                     {/* Logo */}
                     <div className="w-14 h-14 mb-3 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
                       <Image
@@ -141,7 +135,7 @@ export default function PaymentMethods() {
 
             {/* Mobile Scrollable */}
             <div className="md:hidden">
-              <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide px-6 snap-x snap-mandatory">
+              <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide px-6 snap-x snap-mandatory justify-start">
                 {paymentMethods.map((method, index) => (
                   <motion.div
                     key={method.name}
@@ -149,7 +143,7 @@ export default function PaymentMethods() {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
                     viewport={{ once: true }}
-                    className="flex-shrink-0 w-44 snap-center"
+                    className="flex-shrink-0 w-48 snap-center"
                   >
                     <div className="bg-k-gray/30 rounded-xl p-4 border border-k-gray/20 h-40 flex flex-col items-center justify-center text-center shadow-lg">
                       {/* Logo */}

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
+import { MessageCircle } from 'lucide-react'
 import Container from '@/components/Container'
 import PricingCard from '@/components/PricingCard'
 import GradientIllustrations from '@/components/GradientIllustrations'
@@ -61,23 +62,6 @@ export default function Pricing() {
               </div>
             </div>
 
-            {/* Internet & Mobile */}
-            <div className="space-y-6 sm:space-y-8">
-              <div className="text-center">
-                <h3 className="text-xl sm:text-2xl font-heading font-bold text-k-yellow mb-2">
-                  📱 Internet & Mobile
-                </h3>
-                <p className="text-gray-400 text-sm sm:text-base">Data plans and mobile services</p>
-              </div>
-              <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-                {plans.filter(plan => plan.tag === 'Internet & Mobile').map((plan, index) => (
-                  <div key={plan.product} className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)] max-w-sm">
-                    <PricingCard plan={plan} index={index} />
-                  </div>
-                ))}
-              </div>
-            </div>
-
             {/* Software & Licenses */}
             <div className="space-y-6 sm:space-y-8">
               <div className="text-center">
@@ -111,6 +95,23 @@ export default function Pricing() {
                 ))}
               </div>
             </div>
+
+            {/* Internet & Mobile */}
+            <div className="space-y-6 sm:space-y-8">
+              <div className="text-center">
+                <h3 className="text-xl sm:text-2xl font-heading font-bold text-k-yellow mb-2">
+                  📱 Internet & Mobile
+                </h3>
+                <p className="text-gray-400 text-sm sm:text-base">Data plans and mobile services</p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+                {plans.filter(plan => plan.tag === 'Internet & Mobile').map((plan, index) => (
+                  <div key={plan.product} className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)] max-w-sm">
+                    <PricingCard plan={plan} index={index} />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           <motion.div
@@ -118,17 +119,26 @@ export default function Pricing() {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="text-center space-y-4"
+            className="relative"
           >
-            <p className="text-gray-300">
-              Don&apos;t see what you&apos;re looking for? We have many more services available.
-            </p>
-            <Button
-              size="lg"
-              onClick={handleContactClick}
-            >
-              Get in Touch
-            </Button>
+            <div className="max-w-4xl mx-auto overflow-hidden rounded-2xl border border-k-yellow/20 bg-gradient-to-b from-k-black/60 to-k-black/80 p-6 sm:p-8 shadow-xl backdrop-blur-sm">
+              <div className="text-center space-y-5">
+                <p className="text-base sm:text-lg md:text-xl text-gray-100 font-medium">
+                  Don&apos;t see what you&apos;re looking for? <span className="text-k-yellow">We have many more services available.</span>
+                </p>
+                <div className="flex justify-center">
+                  <Button
+                    size="xl"
+                    onClick={handleContactClick}
+                    className="w-full sm:w-auto"
+                    aria-label="Get in touch"
+                  >
+                    <MessageCircle className="w-5 h-5 mr-2" />
+                    Get in Touch
+                  </Button>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </motion.div>
       </Container>

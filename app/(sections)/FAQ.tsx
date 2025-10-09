@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     question: "What payment methods do you accept?",
-    answer: "We accept multiple payment methods with different fees: Ooredoo (17% fees), D17 (1% fees), PayPal (0% fees), Crypto (network fees apply), and Wise (0% fees). Each payment method has fees that are added to your total. For example, if you buy something for 10 dinars with a 10% fee method, your total will be 11 dinars. Contact us on Messenger to discuss the best payment option for you."
+    answer: "We accept multiple payment methods with different fees: Ooredoo (17% fees), D17 (1% fees), PayPal (0% fees), and Crypto (network fees apply). Each payment method has fees that are added to your total. For example, if you buy something for 10 dinars with a 10% fee method, your total will be 11 dinars. Contact us on Messenger to discuss the best payment option for you."
   },
   {
     question: "How do gaming credits work?",

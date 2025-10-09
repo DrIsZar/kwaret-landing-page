@@ -59,7 +59,7 @@ export const plans = [
     product: 'Spotify Premium (Duo)',
     bullets: ['2 persons', 'Fast activation', 'Warranty'],
     tiers: [
-      { label: '1 Month', price: '17.9 TND' },
+      { label: '1 Month', price: '16.9 TND' },
       { label: '3 Months', price: '34.9 TND', note: '~40% OFF' },
       { label: '6 Months', price: '59.9 TND', note: '~45% OFF' },
       { label: '1 Year', price: '109.9 TND', note: '~50% OFF' }
