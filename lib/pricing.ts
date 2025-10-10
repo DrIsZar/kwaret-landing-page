@@ -8,7 +8,8 @@ export const plans = [
       { label: '1 Month', price: '24.9 TND' },
       { label: '3 Months', price: '59.9 TND', note: '~20% OFF' }
     ],
-    color: 'k.yellow'
+    color: 'k.yellow',
+    outOfStock: true
   },
   {
     tag: 'Software',
@@ -228,5 +229,5 @@ export const plans = [
   }
 ]
 
-export type Plan = typeof plans[0]
+export type Plan = typeof plans[0] & { outOfStock?: boolean }
 export type Tier = Plan['tiers'][0]

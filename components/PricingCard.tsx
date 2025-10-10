@@ -44,6 +44,7 @@ interface PricingCardProps {
       price: string
       note?: string
     }>
+    outOfStock?: boolean
   }
   index: number
 }
@@ -67,15 +68,24 @@ export default function PricingCard({ plan, index }: PricingCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true }}
-      whileHover={{ y: -5 }}
+      whileHover={plan.outOfStock ? {} : { y: -5 }}
       className="h-full"
     >
-      <Card className="hover:shadow-glow transition-all duration-300 flex flex-col h-full border-k-gray/20 hover:border-k-yellow/30 bg-k-gray/5 hover:bg-k-gray/10">
+      <Card className={`transition-all duration-300 flex flex-col h-full border-k-gray/20 bg-k-gray/5 ${
+        plan.outOfStock 
+          ? 'opacity-60 border-red-500/30 bg-red-500/5' 
+          : 'hover:shadow-glow hover:border-k-yellow/30 hover:bg-k-gray/10'
+      }`}>
         <CardHeader className="space-y-4 pb-6">
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center gap-2">
             <BrandBadge variant="outline" className="text-xs">
               {plan.tag}
             </BrandBadge>
+            {plan.outOfStock && (
+              <BrandBadge variant="outline" className="text-xs bg-red-500/20 border-red-500/50 text-red-400">
+                Out of Stock
+              </BrandBadge>
+            )}
           </div>
           
           {/* Service Logo */}
@@ -135,19 +145,29 @@ export default function PricingCard({ plan, index }: PricingCardProps) {
             {displayedTiers.map((tier, tierIndex) => (
               <div
                 key={tierIndex}
-                className="flex items-center justify-between p-3 sm:p-4 rounded-lg bg-k-gray/30 hover:bg-k-gray/50 border border-k-gray/20 hover:border-k-yellow/30 transition-all duration-200 cursor-pointer group"
-                onClick={() => handleBuyClick(plan.product, tier.label)}
+                className={`flex items-center justify-between p-3 sm:p-4 rounded-lg border transition-all duration-200 ${
+                  plan.outOfStock 
+                    ? 'bg-k-gray/20 border-k-gray/10 cursor-not-allowed opacity-50' 
+                    : 'bg-k-gray/30 hover:bg-k-gray/50 border-k-gray/20 hover:border-k-yellow/30 cursor-pointer group'
+                }`}
+                onClick={plan.outOfStock ? undefined : () => handleBuyClick(plan.product, tier.label)}
               >
                 <div className="flex-1 min-w-0">
-                  <div className="font-medium text-k-white text-sm sm:text-base group-hover:text-k-yellow transition-colors whitespace-normal break-words">{tier.label}</div>
+                  <div className={`font-medium text-sm sm:text-base whitespace-normal break-words transition-colors ${
+                    plan.outOfStock ? 'text-gray-500' : 'text-k-white group-hover:text-k-yellow'
+                  }`}>{tier.label}</div>
                   {tier.note && (
-                    <div className="text-xs sm:text-sm text-k-yellow font-medium mt-1">
+                    <div className={`text-xs sm:text-sm font-medium mt-1 ${
+                      plan.outOfStock ? 'text-gray-500' : 'text-k-yellow'
+                    }`}>
                       {tier.note}
                     </div>
                   )}
                 </div>
                 <div className="text-right flex-shrink-0 ml-3">
-                  <div className="font-bold text-k-yellow text-sm sm:text-base group-hover:text-k-white transition-colors">
+                  <div className={`font-bold text-sm sm:text-base transition-colors ${
+                    plan.outOfStock ? 'text-gray-500' : 'text-k-yellow group-hover:text-k-white'
+                  }`}>
                     {tier.price}
                   </div>
                 </div>
@@ -177,10 +197,13 @@ export default function PricingCard({ plan, index }: PricingCardProps) {
 
           {/* CTA Button */}
           <Button
-            className="w-full mt-auto py-2 sm:py-3 text-sm sm:text-base hover:scale-105 transition-transform duration-200"
-            onClick={() => handleBuyClick(plan.product, 'any plan')}
+            className={`w-full mt-auto py-2 sm:py-3 text-sm sm:text-base transition-transform duration-200 ${
+              plan.outOfStock ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'
+            }`}
+            onClick={plan.outOfStock ? undefined : () => handleBuyClick(plan.product, 'any plan')}
+            disabled={plan.outOfStock}
           >
-            Buy Now
+            {plan.outOfStock ? 'Out of Stock' : 'Buy Now'}
           </Button>
         </CardContent>
       </Card>
