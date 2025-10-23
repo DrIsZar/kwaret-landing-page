@@ -43,7 +43,10 @@ export const plans = [
     tag: '🔥 Popular',
     product: 'Netflix Premium',
     bullets: ['4K UHD + HDR', '4 devices at once', 'Downloads, spatial audio'],
-    tiers: [{ label: '1 Month', price: '49.9 TND', note: '~15% OFF' }]
+    tiers: [
+      { label: '1 Month (One Profile)', price: '9.9 TND' },
+      { label: '1 Month (Full Account)', price: '39.9 TND' }
+    ]
   },
   {
     tag: 'Music Streaming',
