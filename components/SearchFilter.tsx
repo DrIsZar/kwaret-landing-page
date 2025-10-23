@@ -143,7 +143,7 @@ export default function SearchFilter({
         <div className="flex flex-wrap gap-2">
           {searchQuery && (
             <div className="px-3 py-1 bg-k-yellow/20 border border-k-yellow/30 rounded-full text-sm text-k-yellow flex items-center gap-2">
-              Search: "{searchQuery}"
+              Search: &quot;{searchQuery}&quot;
               <button
                 onClick={() => onSearchChange('')}
                 className="hover:bg-k-yellow/20 rounded-full p-0.5"
