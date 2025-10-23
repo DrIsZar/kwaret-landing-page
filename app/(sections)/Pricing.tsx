@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { MessageCircle } from 'lucide-react'
@@ -8,15 +8,55 @@ import Container from '@/components/Container'
 import PricingCard from '@/components/PricingCard'
 import GradientIllustrations from '@/components/GradientIllustrations'
 import SocialModal from '@/components/SocialModal'
+import SearchFilter from '@/components/SearchFilter'
 import { plans } from '@/lib/pricing'
-import { socials } from '@/lib/socials'
+import { filterPlans } from '@/lib/filterUtils'
 
 export default function Pricing() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   
+  // Filter state
+  const [searchQuery, setSearchQuery] = useState('')
+  const [activeCategories, setActiveCategories] = useState<string[]>([])
+  
   const handleContactClick = () => {
     setIsModalOpen(true)
   }
+
+  // Apply filters
+  const filteredPlans = useMemo(() => {
+    return filterPlans(plans, {
+      searchQuery,
+      categories: activeCategories,
+    })
+  }, [searchQuery, activeCategories])
+
+  // Group filtered plans by category
+  const groupedPlans = useMemo(() => {
+    const groups: Record<string, typeof plans> = {
+      popular: [],
+      software: [],
+      gaming: [],
+      streaming: [],
+      internet: [],
+    }
+
+    filteredPlans.forEach((plan) => {
+      if (plan.tag === '🔥 Popular') {
+        groups.popular.push(plan)
+      } else if (plan.tag === 'Software') {
+        groups.software.push(plan)
+      } else if (plan.tag === 'Gaming') {
+        groups.gaming.push(plan)
+      } else if (plan.tag === 'Music Streaming' || plan.tag === 'Video Streaming') {
+        groups.streaming.push(plan)
+      } else if (plan.tag === 'Internet & Mobile') {
+        groups.internet.push(plan)
+      }
+    })
+
+    return groups
+  }, [filteredPlans])
 
   return (
     <section className="py-16 sm:py-24 bg-k-black relative overflow-hidden">
@@ -39,80 +79,163 @@ export default function Pricing() {
             </p>
           </div>
 
-          {/* Group products by category */}
-          <div className="space-y-12 sm:space-y-16">
-            {/* Premium Subscriptions */}
-            <div className="space-y-6 sm:space-y-8">
-              <div className="text-center">
-                <h3 className="text-xl sm:text-2xl font-heading font-bold text-k-yellow mb-2">
-                  🔥 Premium Subscriptions
-                </h3>
-                <p className="text-gray-400 text-sm sm:text-base">Popular streaming and productivity services</p>
-              </div>
-              <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-                {plans.filter(plan => 
-                  plan.tag === '🔥 Popular' || 
-                  plan.tag === 'Music Streaming' || 
-                  plan.tag === 'Video Streaming'
-                ).map((plan, index) => (
-                  <div key={plan.product} className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)] max-w-sm">
-                    <PricingCard plan={plan} index={index} />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Software & Licenses */}
-            <div className="space-y-6 sm:space-y-8">
-              <div className="text-center">
-                <h3 className="text-xl sm:text-2xl font-heading font-bold text-k-yellow mb-2">
-                  💻 Software & Licenses
-                </h3>
-                <p className="text-gray-400 text-sm sm:text-base">Professional software and design tools</p>
-              </div>
-              <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-                {plans.filter(plan => plan.tag === 'Software').map((plan, index) => (
-                  <div key={plan.product} className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)] max-w-sm">
-                    <PricingCard plan={plan} index={index} />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Gaming Credits */}
-            <div className="space-y-6 sm:space-y-8">
-              <div className="text-center">
-                <h3 className="text-xl sm:text-2xl font-heading font-bold text-k-yellow mb-2">
-                  🎮 Gaming Credits
-                </h3>
-                <p className="text-gray-400 text-sm sm:text-base">Robux, PlayStation cards, and gaming currencies</p>
-              </div>
-              <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-                {plans.filter(plan => plan.tag === 'Gaming').map((plan, index) => (
-                  <div key={plan.product} className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)] max-w-sm">
-                    <PricingCard plan={plan} index={index} />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Internet & Mobile */}
-            <div className="space-y-6 sm:space-y-8">
-              <div className="text-center">
-                <h3 className="text-xl sm:text-2xl font-heading font-bold text-k-yellow mb-2">
-                  📱 Internet & Mobile
-                </h3>
-                <p className="text-gray-400 text-sm sm:text-base">Data plans and mobile services</p>
-              </div>
-              <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-                {plans.filter(plan => plan.tag === 'Internet & Mobile').map((plan, index) => (
-                  <div key={plan.product} className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)] max-w-sm">
-                    <PricingCard plan={plan} index={index} />
-                  </div>
-                ))}
-              </div>
-            </div>
+          {/* Search and Filter */}
+          <div className="max-w-5xl mx-auto">
+            <SearchFilter
+              onSearchChange={setSearchQuery}
+              onCategoryChange={setActiveCategories}
+              activeCategories={activeCategories}
+              searchQuery={searchQuery}
+              totalResults={filteredPlans.length}
+            />
           </div>
+
+          {/* Filtered Results */}
+          {filteredPlans.length === 0 ? (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center py-16 space-y-4"
+            >
+              <div className="text-6xl">😕</div>
+              <h3 className="text-2xl font-bold text-k-white">No services found</h3>
+              <p className="text-gray-400">
+                Try adjusting your filters or search query
+              </p>
+              <Button
+                onClick={() => {
+                  setSearchQuery('')
+                  setActiveCategories([])
+                }}
+                variant="outline"
+                className="mt-4"
+              >
+                Clear All Filters
+              </Button>
+            </motion.div>
+          ) : (
+            <div className="space-y-12 sm:space-y-16">
+              {/* Show grouped results only if no search query is applied */}
+              {searchQuery === '' ? (
+                <>
+                  {/* Popular Services */}
+                  {(groupedPlans.popular.length > 0 || groupedPlans.streaming.length > 0) && (
+                    <div className="space-y-6 sm:space-y-8">
+                      <div className="text-center">
+                        <h3 className="text-xl sm:text-2xl font-heading font-bold text-k-yellow mb-2">
+                          🔥 Premium Subscriptions
+                        </h3>
+                        <p className="text-gray-400 text-sm sm:text-base">Popular streaming and productivity services</p>
+                      </div>
+                      <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+                        {[...groupedPlans.popular, ...groupedPlans.streaming].map((plan, index) => (
+                          <motion.div
+                            key={plan.product}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.3, delay: index * 0.05 }}
+                            className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)] max-w-sm"
+                          >
+                            <PricingCard plan={plan} index={index} />
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Software & Licenses */}
+                  {groupedPlans.software.length > 0 && (
+                    <div className="space-y-6 sm:space-y-8">
+                      <div className="text-center">
+                        <h3 className="text-xl sm:text-2xl font-heading font-bold text-k-yellow mb-2">
+                          💻 Software & Licenses
+                        </h3>
+                        <p className="text-gray-400 text-sm sm:text-base">Professional software and design tools</p>
+                      </div>
+                      <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+                        {groupedPlans.software.map((plan, index) => (
+                          <motion.div
+                            key={plan.product}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.3, delay: index * 0.05 }}
+                            className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)] max-w-sm"
+                          >
+                            <PricingCard plan={plan} index={index} />
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Gaming Credits */}
+                  {groupedPlans.gaming.length > 0 && (
+                    <div className="space-y-6 sm:space-y-8">
+                      <div className="text-center">
+                        <h3 className="text-xl sm:text-2xl font-heading font-bold text-k-yellow mb-2">
+                          🎮 Gaming Credits
+                        </h3>
+                        <p className="text-gray-400 text-sm sm:text-base">Robux, PlayStation cards, and gaming currencies</p>
+                      </div>
+                      <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+                        {groupedPlans.gaming.map((plan, index) => (
+                          <motion.div
+                            key={plan.product}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.3, delay: index * 0.05 }}
+                            className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)] max-w-sm"
+                          >
+                            <PricingCard plan={plan} index={index} />
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Internet & Mobile */}
+                  {groupedPlans.internet.length > 0 && (
+                    <div className="space-y-6 sm:space-y-8">
+                      <div className="text-center">
+                        <h3 className="text-xl sm:text-2xl font-heading font-bold text-k-yellow mb-2">
+                          📱 Internet & Mobile
+                        </h3>
+                        <p className="text-gray-400 text-sm sm:text-base">Data plans and mobile services</p>
+                      </div>
+                      <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+                        {groupedPlans.internet.map((plan, index) => (
+                          <motion.div
+                            key={plan.product}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.3, delay: index * 0.05 }}
+                            className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)] max-w-sm"
+                          >
+                            <PricingCard plan={plan} index={index} />
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </>
+              ) : (
+                /* Show flat list when searching */
+                <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+                  {filteredPlans.map((plan, index) => (
+                    <motion.div
+                      key={plan.product}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.05 }}
+                      className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)] max-w-sm"
+                    >
+                      <PricingCard plan={plan} index={index} />
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
 
           <motion.div
             initial={{ opacity: 0 }}
