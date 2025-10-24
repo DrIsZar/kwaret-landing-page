@@ -11,7 +11,6 @@ import SocialModal from '@/components/SocialModal'
 
 // Logo mapping for each service
 const serviceLogos = {
-  'ChatGPT Plus (Workspace, GPT-5)': '/logos/chatgpt-logo.png',
   'Adobe Creative Cloud (All Apps)': '/logos/adobe-logo.png',
   'Netflix Premium': '/logos/netflix-logo.png',
   'Spotify Premium (Solo)': '/logos/spotify-logo.png',
@@ -102,7 +101,6 @@ export default function PricingCard({ plan, index }: PricingCardProps) {
                       ? 'object-contain scale-100'
                       : `object-cover ${
                           plan.product.includes('Adobe') ? 'scale-125' : 
-                          plan.product.includes('ChatGPT') ? 'scale-100' : 
                           'scale-110'
                         }`
                 }

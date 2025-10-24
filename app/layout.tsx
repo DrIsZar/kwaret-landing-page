@@ -11,8 +11,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Kwaret TN — Premium Upgrades & Digital Services',
-  description: 'Get fast access to premium services like ChatGPT Plus, Spotify, Netflix, YouTube Premium, and Adobe Creative Cloud. Quick activation, full warranty, and 24/7 support in Tunisia.',
-  keywords: 'Kwaret TN, premium upgrades, ChatGPT Plus, Spotify Premium, Netflix, YouTube Premium, Adobe Creative Cloud, Tunisia, digital services',
+  description: 'Get fast access to premium services like Spotify, Netflix, YouTube Premium, and Adobe Creative Cloud. Quick activation, full warranty, and 24/7 support in Tunisia.',
+  keywords: 'Kwaret TN, premium upgrades, Spotify Premium, Netflix, YouTube Premium, Adobe Creative Cloud, Tunisia, digital services',
   authors: [{ name: 'Foued el Beji', url: 'https://kwaret.tn' }],
   creator: 'Kwaret TN',
   publisher: 'Kwaret TN',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Kwaret TN — Premium Upgrades & Digital Services',
-    description: 'Get fast access to premium services like ChatGPT Plus, Spotify, Netflix, YouTube Premium, and Adobe Creative Cloud. Quick activation, full warranty, and 24/7 support in Tunisia.',
+    description: 'Get fast access to premium services like Spotify, Netflix, YouTube Premium, and Adobe Creative Cloud. Quick activation, full warranty, and 24/7 support in Tunisia.',
     url: 'https://kwaret.tn',
     siteName: 'Kwaret TN',
     images: [
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Kwaret TN — Premium Upgrades & Digital Services',
-    description: 'Get fast access to premium services like ChatGPT Plus, Spotify, Netflix, YouTube Premium, and Adobe Creative Cloud. Quick activation, full warranty, and 24/7 support in Tunisia.',
+    description: 'Get fast access to premium services like Spotify, Netflix, YouTube Premium, and Adobe Creative Cloud. Quick activation, full warranty, and 24/7 support in Tunisia.',
     images: ['/opengraph-image'],
     creator: '@kwaret',
   },

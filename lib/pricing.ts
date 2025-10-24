@@ -1,17 +1,6 @@
 export const plans = [
   // Premium Subscriptions
   {
-    tag: '🔥 Popular',
-    product: 'ChatGPT Plus (Workspace, GPT-5)',
-    bullets: ['GPT-5 access', 'No shared data/chats', 'Warranty'],
-    tiers: [
-      { label: '1 Month', price: '24.9 TND' },
-      { label: '3 Months', price: '59.9 TND', note: '~20% OFF' }
-    ],
-    color: 'k.yellow',
-    outOfStock: true
-  },
-  {
     tag: 'Software',
     product: 'Cursor AI Pro',
     bullets: ['Unlimited Copilot+ context', 'Faster code generation', 'Priority features & updates'],

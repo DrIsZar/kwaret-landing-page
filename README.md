@@ -112,7 +112,7 @@ colors: {
    Replace the placeholder files in `/public` with your actual assets:
    - `kwaret-logo.png` - The round yellow "K" logo
    - `foued.jpg` - Portrait of Foued el Beji
-   - Optional: `ss-spotify.jpg`, `ss-chatgpt.jpg`, etc.
+   - Optional: `ss-spotify.jpg`, `ss-netflix.jpg`, etc.
 
 4. **Update social links**
    

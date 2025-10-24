@@ -83,7 +83,7 @@ export default function SearchFilter({
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
           <input
             type="text"
-            placeholder="Search services (e.g., Spotify, ChatGPT, Netflix...)"
+            placeholder="Search services (e.g., Spotify, Netflix, Adobe...)"
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             className="w-full pl-12 pr-10 py-3 bg-k-gray/50 border border-k-gray rounded-xl text-k-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-k-yellow focus:border-transparent transition-all"
