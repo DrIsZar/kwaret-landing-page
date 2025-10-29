@@ -12,6 +12,7 @@ import SocialModal from '@/components/SocialModal'
 // Logo mapping for each service
 const serviceLogos = {
   'Adobe Creative Cloud (All Apps)': '/logos/adobe-logo.png',
+  'ChatGPT Plus': '/logos/chatgpt-logo.png',
   'Netflix Premium': '/logos/netflix-logo.png',
   'Spotify Premium (Solo)': '/logos/spotify-logo.png',
   'Spotify Premium (Duo)': '/logos/spotify-logo.png',
@@ -95,14 +96,16 @@ export default function PricingCard({ plan, index }: PricingCardProps) {
                 alt={`${plan.product} Logo`}
                 fill
                 className={
-                  plan.product.includes('Microsoft 365')
-                    ? 'object-contain scale-90'
-                    : plan.product.includes('Robux')
-                      ? 'object-contain scale-100'
-                      : `object-cover ${
-                          plan.product.includes('Adobe') ? 'scale-125' : 
-                          'scale-110'
-                        }`
+                  plan.product.includes('ChatGPT')
+                    ? 'object-contain scale-100'
+                    : plan.product.includes('Microsoft 365')
+                      ? 'object-contain scale-90'
+                      : plan.product.includes('Robux')
+                        ? 'object-contain scale-100'
+                        : `object-cover ${
+                            plan.product.includes('Adobe') ? 'scale-125' : 
+                            'scale-110'
+                          }`
                 }
                 onError={(e) => {
                   // Fallback to placeholder if logo doesn't exist
