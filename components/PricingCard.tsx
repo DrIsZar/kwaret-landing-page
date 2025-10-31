@@ -98,7 +98,7 @@ export default function PricingCard({ plan, index }: PricingCardProps) {
                 className={
                   plan.product.includes('ChatGPT')
                     ? 'object-contain scale-100'
-                    : plan.product.includes('Microsoft 365')
+                    : plan.product.includes('Microsoft 365gi')
                       ? 'object-contain scale-90'
                       : plan.product.includes('Robux')
                         ? 'object-contain scale-100'

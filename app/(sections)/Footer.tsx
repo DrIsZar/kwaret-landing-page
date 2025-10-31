@@ -98,7 +98,15 @@ export default function Footer() {
                 © 2025 Kwaret TN. All rights reserved. | Founded by Foued el Beji (JelyfishTN)
               </p>
               <p className="text-gray-400 text-sm">
-                Website by <span className="text-k-yellow font-medium">VeltoTech LLC</span>
+                Built by{' '}
+                <a
+                  href="https://www.instagram.com/zarrad_ismail/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-k-yellow font-medium hover:underline transition-colors"
+                >
+                  Ismail Zarrad
+                </a>
               </p>
               <div className="flex items-center gap-6 text-sm">
                 <a 
