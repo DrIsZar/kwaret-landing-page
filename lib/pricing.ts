@@ -90,14 +90,6 @@ export const plans = [
       { label: 'Windows 11 Pro Key', price: '13.9 TND' }
     ]
   },
-  {
-    tag: 'Software',
-    product: 'Canva Pro',
-    bullets: ['1 Year subscription', 'All premium features', 'Fast activation'],
-    tiers: [
-      { label: '1 Year', price: '39.9 TND' }
-    ]
-  },
   
   // Gaming Credits
   {
