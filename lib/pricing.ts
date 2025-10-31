@@ -2,49 +2,6 @@ export const plans = [
   // Premium Subscriptions
   {
     tag: '🔥 Popular',
-    product: 'ChatGPT Plus',
-    bullets: [
-      'GPT-5 access',
-      'Unlimited image generation',
-      'Faster response times & priority during peak',
-      'Early access to new features',
-      'Advanced tools',
-      'Higher usage limits'
-    ],
-    tiers: [
-      { label: '1 Month', price: '29.9 TND' }
-    ]
-  },
-  {
-    tag: 'Software',
-    product: 'Cursor AI Pro',
-    bullets: ['Unlimited Copilot+ context', 'Faster code generation', 'Priority features & updates'],
-    tiers: [
-      { label: '1 Month', price: '44.9 TND' },
-      { label: '3 Months', price: '89.9 TND' }
-    ]
-  },
-  {
-    tag: '🔥 Popular',
-    product: 'Adobe Creative Cloud (All Apps)',
-    bullets: ['Full Adobe suite', 'AI features', 'Fonts, Stock, Cloud storage'],
-    tiers: [
-      { label: '1 Month', price: '39.9 TND' },
-      { label: '3 Months', price: '89.9 TND', note: '~25% OFF' },
-      { label: '6 Months', price: '139.9 TND', note: '~30% OFF' },
-      { label: '12 Months', price: '199.9 TND', note: '~40% OFF' }
-    ]
-  },
-  {
-    tag: 'Software',
-    product: 'Microsoft 365 (All Apps)',
-    bullets: ['All Office apps', '1 Year subscription', 'Fast activation'],
-    tiers: [
-      { label: '1 Year', price: '99 TND' }
-    ]
-  },
-  {
-    tag: '🔥 Popular',
     product: 'Netflix Premium',
     bullets: ['4K UHD + HDR', '4 devices at once', 'Downloads, spatial audio'],
     tiers: [
